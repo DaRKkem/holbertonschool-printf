@@ -4,8 +4,6 @@
 #include <stdarg.h>
 #include "main.h"
 
-
-
 /**
  * _printf - prints a string and arguments (if given)
  *
@@ -31,8 +29,8 @@ int _printf(const char *format, ...)
 
 	for (i = 0; format[i] != '\0'; i++)
 	{
-		if (format[i] == '%' && (format[i + 1] == 'c' || format[i + 1] == 's'
-								|| format[i + 1] == 'd' || format[i + 1] == 'i'))
+		if ((format[i + 1] == 'c' || format[i + 1] == 's'||
+			format[i + 1] == 'd' || format[i + 1] == 'i') && format[i] == '%')
 		{
 			arr[y] = i;
 			y++;

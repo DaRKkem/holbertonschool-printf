@@ -4,10 +4,65 @@
 #include <stdarg.h>
 #include "main.h"
 
-void _print_int()
+/**
+ * _print_char - prints a simple char
+ *
+ * Return: Always nothing.
+ */
+void _print_char(char c)
 {
+	_putchar(c);
+	_putchar('\n');
+}
 
-	return;
+/**
+ * _print_string - prints an integer
+ *
+ * Return: Always nothing.
+ */
+void _print_string(char *s)
+{
+	int i;
+
+	for (i = 0; s[i] != '\0'; i++)
+		_putchar(s[i]);
+
+	_putchar('\n');
+}
+
+/**
+ * _print_int - prints an integer
+ *
+ * Return: Always nothing.
+ */
+void _print_int(int n)
+{
+	int div = 1;
+
+	if (n == 0)
+	{
+		_putchar('0');
+		_putchar('\n');
+		return;
+	}
+
+	if (n < 0)
+	{
+		_putchar('-');
+		n = -n;
+	}
+
+	while (n / div >= 10) /* tant qu'on atteind pas les unités (9 ou moins) */
+		div *= 10;
+
+	while (div > 0)
+	{
+		_putchar((n / div) + '0');
+		n %= div;
+		div /= 10;
+	}
+
+	_putchar('\n');
 }
 
 /**
@@ -23,8 +78,6 @@ int _printf(const char *format, ...)
 	va_list args; /* args = liste des arguments*/
 
 	va_start(args, format);
-
-	for (i = 0; )
 
 	for (int i = 0; format[i] != '\0'; i++)
 		taille++; /* taille de format */

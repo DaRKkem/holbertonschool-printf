@@ -17,7 +17,7 @@ int (*get_func(char *s))(int n)
 		{"c", _char},
 		{"s", _string},
 		{"d", _int},
-		{"i", _int_hex},
+		{"i", _int},
 		{NULL, NULL}
 	};
 

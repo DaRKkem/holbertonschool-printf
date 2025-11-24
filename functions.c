@@ -7,11 +7,11 @@
  * _char - 
  * @n: number
  *
- * Return: 0 or ele
+ * Return: Always 
  */
-int _char(int n)
+int _char(char c)
 {
-	return (0);
+	return (1);
 }
 
 /**
@@ -20,7 +20,7 @@ int _char(int n)
  *
  * Return: 0 or ele
  */
-int _string(int n)
+int _string(char s)
 {
 	return (0);
 }

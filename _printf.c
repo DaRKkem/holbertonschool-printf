@@ -13,14 +13,33 @@
  */
 int _printf(const char *format, ...)
 {
-	int i, taille = 0;
+	int i, y = 0, taille = 0, compte = 0;
+	int *arr;
+
 	va_list args; /* args = liste des arguments*/
 
 	va_start(args, format);
 
-	va_arg(args, char);
+	for (int i = 0; format[i] != '\0'; i++)
+		taille++; /* taille de format */
+	
+	for (i = 0; format[i] != '\0'; i++)
+	{
+		if (format[i] == '%')
+			compte++;
+	}
 
-	for (int i = 0; )
-
+	for (i = 0; format[i] != '\0'; i++)
+	{
+		if (format[i] == '%' && (format[i + 1] == 'c' || format[i + 1] == 's'
+								|| format[i + 1] == 'd' || format[i + 1] == 'i'))
+		{
+			arr[y] = i;
+			y++;
+		}
+	}
+	
+	
+	
 	return (0);
 }

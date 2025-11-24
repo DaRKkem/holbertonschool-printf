@@ -13,12 +13,14 @@
  */
 int _printf(const char *format, ...)
 {
-	int i = 0;
+	int i, taille = 0;
 	va_list args; /* args = liste des arguments*/
 
 	va_start(args, format);
 
 	va_arg(args, char);
+
+	for (int i = 0; )
 
 	return (0);
 }

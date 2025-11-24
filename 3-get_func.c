@@ -13,7 +13,7 @@ int (*get_func(char *s))(int n)
 {
 	int i = 0;
 
-	types container[] = {
+	spec container[] = {
 		{"c", _char},
 		{"s", _string},
 		{"d", _int},

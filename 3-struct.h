@@ -12,10 +12,10 @@ int _int(int n);
  * @type: The type to search
  * @f: The function associated
  */
-typedef struct types
+typedef struct spec
 {
 	char *type; /* exemple : c, s, d, i, etc... */
 	int (*f)(int);
-} types;
+} spec;
 
 #endif /* STRUCT_H */

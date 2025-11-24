@@ -6,6 +6,6 @@ int _printf(const char *format, ...);
 void _print_char();
 void _print_string();
 void _print_int();
-void _print_int2();
+void _print_int_hex();
 
 #endif /* MAIN_H */

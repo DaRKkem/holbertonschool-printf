@@ -42,7 +42,7 @@ int _int(int n)
  *
  * Return: 0 or ele
  */
-int _int2(int n)
+int _int_hex(int n)
 {
 	return (0);
 }

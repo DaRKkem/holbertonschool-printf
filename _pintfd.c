@@ -4,7 +4,10 @@
 #include <stdarg.h>
 #include "main.h"
 
-
+void _print_int()
+{
+	return;
+}
 
 /**
  * _printf - prints a string and arguments (if given)

@@ -11,7 +11,7 @@
  *
  * Return: Always nothing.
  */
-int _printf(const char *format, ..)
+int _printf(const char *format, ...)
 {
 	int i = 0;
 	va_list args; /* args = liste des arguments*/

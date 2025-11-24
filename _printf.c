@@ -6,6 +6,7 @@
 
 void _print_int()
 {
+
 	return;
 }
 
@@ -23,6 +24,8 @@ int _printf(const char *format, ...)
 
 	va_start(args, format);
 
+	for (i = 0; )
+
 	for (int i = 0; format[i] != '\0'; i++)
 		taille++; /* taille de format */
 	
@@ -37,12 +40,12 @@ int _printf(const char *format, ...)
 		if ((format[i + 1] == 'c' || format[i + 1] == 's'||
 			format[i + 1] == 'd' || format[i + 1] == 'i') && format[i] == '%')
 		{
-			arr[y] = i;
+			arr[y] = i + 1;
 			y++;
 		}
 	}
 	
-	
+	va_end(args);
 	
 	return (0);
 }

@@ -5,7 +5,6 @@ int (*get_func(char *s))(int);
 int _char(int n);
 int _string(int n);
 int _int(int n);
-int _int_hex(int n);
 
 /**
  * struct types - Struct types

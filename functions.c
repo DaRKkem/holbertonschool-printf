@@ -35,14 +35,3 @@ int _int(int n)
 {
 	return (0);
 }
-
-/**
- * _int2 - 
- * @n: number
- *
- * Return: 0 or ele
- */
-int _int_hex(int n)
-{
-	return (0);
-}

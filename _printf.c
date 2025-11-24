@@ -5,67 +5,6 @@
 #include "main.h"
 
 /**
- * _print_char - prints a simple char
- *
- * Return: Always nothing.
- */
-void _print_char(char c)
-{
-	_putchar(c);
-	_putchar('\n');
-}
-
-/**
- * _print_string - prints an integer
- *
- * Return: Always nothing.
- */
-void _print_string(char *s)
-{
-	int i;
-
-	for (i = 0; s[i] != '\0'; i++)
-		_putchar(s[i]);
-
-	_putchar('\n');
-}
-
-/**
- * _print_int - prints an integer
- *
- * Return: Always nothing.
- */
-void _print_int(int n)
-{
-	int div = 1;
-
-	if (n == 0)
-	{
-		_putchar('0');
-		_putchar('\n');
-		return;
-	}
-
-	if (n < 0)
-	{
-		_putchar('-');
-		n = -n;
-	}
-
-	while (n / div >= 10) /* tant qu'on atteind pas les unités (9 ou moins) */
-		div *= 10;
-
-	while (div > 0)
-	{
-		_putchar((n / div) + '0');
-		n %= div;
-		div /= 10;
-	}
-
-	_putchar('\n');
-}
-
-/**
  * _printf - prints a string and arguments (if given)
  *
  * Return: Always nothing.
@@ -93,12 +32,23 @@ int _printf(const char *format, ...)
 		if ((format[i + 1] == 'c' || format[i + 1] == 's'||
 			format[i + 1] == 'd' || format[i + 1] == 'i') && format[i] == '%')
 		{
-			arr[y] = i + 1;
-			y++;
+			switch (format[i])
+			{
+				case 'c':
+					_print_char(va_arg(args, char));
+				case 's':
+					_print_char(va_arg(args, char));
+				case 'd':
+					_print_char(va_arg(args, char));
+				case 'i':
+					_print_char(va_arg(args, char));
+			}
+		}
+		else
+		{
+			_putchar(format[i]);
 		}
 	}
-
-	
 
 	va_end(args);
 	

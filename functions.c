@@ -4,34 +4,64 @@
 #include "3-struct.h"
 
 /**
- * _char - 
- * @n: number
+ * _print_char - prints a simple char
  *
- * Return: Always 
+ * Return: Always 1.
  */
-int _char(char c)
+int _print_char(char c)
 {
+	_putchar(c);
 	return (1);
 }
 
 /**
- * _string - 
- * @n: number
+ * _print_string - prints an integer
  *
- * Return: 0 or ele
+ * Return: Always 'compteur'.
  */
-int _string(char s)
+int _print_string(char *s)
 {
-	return (0);
+	int i, compteur = 0;
+
+	for (i = 0; s[i] != '\0'; i++)
+		_putchar(s[i]);
+		compteur++;
+
+	return (compteur);
 }
 
 /**
- * _int - 
- * @n: number
+ * _print_int - prints an integer
  *
- * Return: 0 or ele
+ * Return: 1 or 'compteur'.
  */
-int _int(int n)
+int _print_int(int n)
 {
-	return (0);
+	int div = 1, compteur = 0;  
+
+	if (n == 0)
+	{
+		_putchar('0');
+		compteur++;
+		return (1);
+	}
+
+	if (n < 0)
+	{
+		_putchar('-');
+		compteur++;
+		n = -n;
+	}
+
+	while (n / div >= 10) /* tant qu'on atteind pas les unités (9 ou moins) */
+		div *= 10;
+
+	while (div > 0)
+	{
+		_putchar((n / div) + '0');
+		compteur++;
+		n %= div;
+		div /= 10;
+	}
+	return (compteur);
 }

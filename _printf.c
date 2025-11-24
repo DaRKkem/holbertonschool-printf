@@ -9,8 +9,8 @@
  *
  * Return: Always nothing.
  */
-void _printf()
+int _printf(const char *format, ...)
 {
 	
-	return;
+	return (0);
 }

@@ -19,9 +19,7 @@
 			return (-1);
 		
 		if (format[i] == '%' && !format[i + 1])
-		{
-			return (_putchar('%'));
-		}
+			return (1);
 
 		va_start(args, format);
 

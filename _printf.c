@@ -27,7 +27,7 @@ int _printf(const char *format, ...)
 			compte++;
 	}
 
-	for (i = 0; format[i] != '\0'; i++) printf("%d", "test")
+	for (i = 0; format[i] != '\0'; i++)
 	{
 		if ((format[i + 1] == 'c' || format[i + 1] == 's'||
 			format[i + 1] == 'd' || format[i + 1] == 'i') && format[i] == '%')

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "3-struct.h"
+#include "struct.h"
 
 /**
  * _print_char - prints a simple char

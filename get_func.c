@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "3-struct.h"
+#include "struct.h"
 #include "main.h"
 
 /**
@@ -19,7 +19,6 @@ int (*get_func(char c))(va_list)
 		{'s', _print_string},
 		{'d', _print_int},
 		{'i', _print_int},
-		{'o', _print_int},
 		{'u', _print_uint},
 		{'\0', NULL}
 	};

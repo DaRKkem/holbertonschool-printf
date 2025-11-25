@@ -11,50 +11,44 @@
  */
 int _printf(const char *format, ...)
 {
-	int i, y = 0, taille = 0, compte = 0;
-	int *arr;
+	int i, compte = 0;
+	va_list args;
+	int (*func)(va_list);
 
-	va_list args; /* args = liste des arguments*/
+	if (!format[i])
+		return (-1);
 
 	va_start(args, format);
 
-	for (int i = 0; format[i] != '\0'; i++)
-		taille++; /* taille de format */
-	
-	for (i = 0; format[i] != '\0'; i++)
+	while (format[i])
 	{
-		if (format[i] == '%')
-			compte++;
-	}
-
-	for (i = 0; format[i] != '\0'; i++)
-	{
-		if ((format[i + 1] == 'c' || format[i + 1] == 's'||
-			format[i + 1] == 'd' || format[i + 1] == 'i') && format[i] == '%')
+		if (format[i] == '%' && format[i + 1])
 		{
-			switch (format[i])
+			i++;
+			func = get_func(format[i]);
+
+			if (func)
 			{
-				case 'c':
-					_print_char(va_arg(args, int));
-					break;
-				case 's':
-					_print_string(va_arg(args, char *));
-					break;
-				case 'd':
-					_print_int(va_arg(args, int));
-					break;
-				case 'i':
-					_print_int(va_arg(args, int));
-					break;
+				compte += func(args);
+			}
+			else if (format[i] == '%')
+			{
+				compte += _putchar('%');
+			}
+			else
+			{
+				compte += _putchar('%');
+				compte += _putchar(format[i]);
 			}
 		}
 		else
 		{
-			_putchar(format[i]);
+			compte += _putchar(format[i]);
 		}
+		i++;
 	}
 
 	va_end(args);
-	
-	return (0);
+
+	return (compte);
 }

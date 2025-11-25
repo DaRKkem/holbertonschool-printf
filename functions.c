@@ -8,8 +8,9 @@
  *
  * Return: Always 1.
  */
-int _print_char(char c)
+int _print_char(va_list args)
 {
+	char c = va_arg(args, int);
 	_putchar(c);
 	return (1);
 }
@@ -19,9 +20,10 @@ int _print_char(char c)
  *
  * Return: Always 'compteur'.
  */
-int _print_string(char *s)
+int _print_string(va_list args)
 {
 	int i, compteur = 0;
+	char *s = va_arg(args, char *);
 
 	for (i = 0; s[i] != '\0'; i++)
 		_putchar(s[i]);
@@ -35,9 +37,10 @@ int _print_string(char *s)
  *
  * Return: 1 or 'compteur'.
  */
-int _print_int(int n)
+int _print_int(va_list args)
 {
-	int div = 1, compteur = 0;  
+	int div = 1, compteur = 0;
+	int n = va_arg(args, int);
 
 	if (n == 0)
 	{

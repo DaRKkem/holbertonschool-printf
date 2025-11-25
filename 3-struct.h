@@ -1,10 +1,12 @@
 #ifndef STRUCT_H
 #define STRUCT_H
+#include <stdarg.h>
 
-int (*get_func(char *s))(int);
-int _char(int n);
-int _string(int n);
-int _int(int n);
+int _putchar(char c);
+int (*get_func(char c))(va_list);
+int _print_char(va_list args);
+int _print_string(va_list args);
+int _print_int(va_list args);
 
 /**
  * struct types - Struct types
@@ -14,8 +16,8 @@ int _int(int n);
  */
 typedef struct spec
 {
-	char *type; /* exemple : c, s, d, i, etc... */
-	int (*f)(int);
+	char type;
+	int (*f)(va_list);
 } spec;
 
 #endif /* STRUCT_H */

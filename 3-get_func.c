@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "3-struct.h"
+#include "main.h"
 
 /**
  * get_func - get the function needed
@@ -9,21 +10,21 @@
  *
  * Return: function needed or NULL
  */
-int (*get_func(char *s))(int n)
+int (*get_func(char c))(va_list)
 {
 	int i = 0;
 
 	spec container[] = {
-		{"c", _char},
-		{"s", _string},
-		{"d", _int},
-		{"i", _int},
-		{NULL, NULL}
+		{'c', _print_char},
+		{'s', _print_string},
+		{'d', _print_int},
+		{'i', _print_int},
+		{'\0', NULL}
 	};
 
-	while (container[i].type != NULL)
+	while (container[i].type != '\0')
 	{
-		if (strcmp(container[i].type, s) == 0)
+		if (container[i].type == c)
 			return (container[i].f);
 		i++;
 	}

@@ -9,7 +9,7 @@
  */
 int main(void)
 {
-	_printf("%");
-	_printf("Complete the sentence: You %s nothing, Jon Snow.\n", (char *)0);
-	return (0);
+    int ret = _printf("%");
+    printf("\nret=%d\n", ret);
+    return 0;
 }

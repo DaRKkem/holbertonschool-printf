@@ -27,7 +27,7 @@ int _printf(const char *format, ...)
 			compte++;
 	}
 
-	for (i = 0; format[i] != '\0'; i++)
+	for (i = 0; format[i] != '\0'; i++) printf("%d", "test")
 	{
 		if ((format[i + 1] == 'c' || format[i + 1] == 's'||
 			format[i + 1] == 'd' || format[i + 1] == 'i') && format[i] == '%')
@@ -35,13 +35,17 @@ int _printf(const char *format, ...)
 			switch (format[i])
 			{
 				case 'c':
-					_print_char(va_arg(args, char));
+					_print_char(va_arg(args, int));
+					break;
 				case 's':
-					_print_char(va_arg(args, char));
+					_print_string(va_arg(args, char *));
+					break;
 				case 'd':
-					_print_char(va_arg(args, char));
+					_print_int(va_arg(args, int));
+					break;
 				case 'i':
-					_print_char(va_arg(args, char));
+					_print_int(va_arg(args, int));
+					break;
 			}
 		}
 		else

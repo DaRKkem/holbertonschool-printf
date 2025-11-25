@@ -17,6 +17,9 @@ int _printf(const char *format, ...)
 
 	if (!format[i])
 		return (-1);
+	
+	if (format[i] == "%" && !format[i + 1])
+		compte++;
 
 	va_start(args, format);
 

@@ -21,7 +21,7 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			if (format[i + 1]) // caractère après %
+			if (format[i + 1])
 			{
 				i++;
 				func = get_func(format[i]);
@@ -35,10 +35,10 @@ int _printf(const char *format, ...)
 					compte += _putchar(format[i]);
 				}
 			}
-			else // % isolé à la fin
+			else
 			{
-				i++;	  // passe le %
-				continue; // ne rien afficher
+				i++;
+				continue;
 			}
 		}
 		else

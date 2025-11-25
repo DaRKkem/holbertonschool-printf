@@ -26,8 +26,7 @@ int _print_string(va_list args)
 	char *s = va_arg(args, char *);
 
 	for (i = 0; s[i] != '\0'; i++)
-		_putchar(s[i]);
-		compteur++;
+		compteur += _putchar(s[i]);
 
 	return (compteur);
 }

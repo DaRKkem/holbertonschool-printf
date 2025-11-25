@@ -44,15 +44,13 @@ int _print_int(va_list args)
 
 	if (n == 0)
 	{
-		_putchar('0');
-		compteur++;
+		compteur += _putchar('0');
 		return (1);
 	}
 
 	if (n < 0)
 	{
-		_putchar('-');
-		compteur++;
+		compteur += _putchar('-');
 		n = -n;
 	}
 
@@ -61,8 +59,40 @@ int _print_int(va_list args)
 
 	while (div > 0)
 	{
-		_putchar((n / div) + '0');
-		compteur++;
+		compteur += _putchar((n / div) + '0');
+		n %= div;
+		div /= 10;
+	}
+	return (compteur);
+}
+
+/**
+ * _print_uint - prints an unsigned integer
+ *
+ * Return: 1 or 'compteur'.
+ */
+int _print_uint(va_list args)
+{
+	int div = 1, compteur = 0;
+	int n = va_arg(args, int);
+
+	if (n == 0)
+	{
+		compteur += _putchar('0');
+		return (1);
+	}
+
+	if (n < 0)
+	{
+		n = -n;
+	}
+
+	while (n / div >= 10) /* tant qu'on atteind pas les unités (9 ou moins) */
+		div *= 10;
+
+	while (div > 0)
+	{
+		compteur += _putchar((n / div) + '0');
 		n %= div;
 		div /= 10;
 	}

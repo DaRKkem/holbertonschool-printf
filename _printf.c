@@ -11,7 +11,7 @@
  */
 int _printf(const char *format, ...)
 {
-	int i, compte = 0;
+	int i = 0, compte = 0;
 	va_list args;
 	int (*func)(va_list);
 

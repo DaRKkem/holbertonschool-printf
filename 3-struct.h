@@ -7,6 +7,7 @@ int (*get_func(char c))(va_list);
 int _print_char(va_list args);
 int _print_string(va_list args);
 int _print_int(va_list args);
+int _print_uint(va_list args);
 
 /**
  * struct types - Struct types

@@ -76,8 +76,9 @@ int _print_int(va_list args)
  */
 int _print_uint(va_list args)
 {
-	int div = 1, compteur = 0;
+	int long div = 1, compteur = 0;
 	int n = va_arg(args, int);
+	long m = n; 
 
 	if (n == 0)
 	{
@@ -85,18 +86,19 @@ int _print_uint(va_list args)
 		return (1);
 	}
 
-	if (n < 0)
+	if (m < 0)
 	{
-		n = -n;
+		compteur += _putchar('-');
+		m = m * -1;
 	}
 
-	while (n / div >= 10) /* tant qu'on atteind pas les unités (9 ou moins) */
+	while (m / div >= 10) /* tant qu'on atteind pas les unités (9 ou moins) */
 		div *= 10;
 
 	while (div > 0)
 	{
-		compteur += _putchar((n / div) + '0');
-		n %= div;
+		compteur += _putchar((m / div) + '0');
+		m %= div;
 		div /= 10;
 	}
 	return (compteur);

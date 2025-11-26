@@ -45,10 +45,8 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			if (format[0] != '%' && format[1] != '\0')
+			if (format[i] != '%' && format[i + 1] != '\0' )
 				compte += _putchar(format[i]);
-			else
-				compte = 0;
 		}
 		i++;
 	}

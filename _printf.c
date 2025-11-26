@@ -19,7 +19,7 @@ int _printf(const char *format, ...)
 	///return (-1);
 
 	va_start(args, format);
-
+ 
 	if (format == NULL) 
 	return (-1);
 
@@ -44,7 +44,6 @@ int _printf(const char *format, ...)
 			else
 			{
 				i++;
-				continue;
 			}
 		}
 		else

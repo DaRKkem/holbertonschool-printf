@@ -7,7 +7,7 @@
 /**
  * _printf - prints a string and arguments (if given)
  *
- * Return: Always nothing.
+ * Return: compte.
  */
 int _printf(const char *format, ...)
 {
@@ -16,6 +16,9 @@ int _printf(const char *format, ...)
 	int (*func)(va_list);
 
 	va_start(args, format);
+
+	if (format == NULL) 
+	return (-1);
 
 	while (format[i])
 	{

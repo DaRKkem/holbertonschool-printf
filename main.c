@@ -9,7 +9,6 @@
  */
 int main(void)
 {
-    int ret = _printf("%");
-    printf("\nret=%d\n", ret);
-    return 0;
+	_printf("%");
+	return (0);
 }

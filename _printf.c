@@ -24,29 +24,25 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			if (format[i + 1])
-			{
-				i++;
-				func = get_func(format[i]);
-				if (func)
-					compte += func(args);
-				else if (format[i] == '%')
-					compte += _putchar('%');
-				else
-				{
-					compte += _putchar('%');
-					compte += _putchar(format[i]);
-				}
-			}
+			if (!format[i + 1])
+				break;
+
+			i++;
+			func = get_func(format[i]);
+
+			if (func)
+				compte += func(args);
+			else if (format[i] == '%')
+				compte += _putchar('%');
 			else
 			{
-				i++;
+				compte += _putchar('%');
+				compte += _putchar(format[i]);
 			}
 		}
 		else
 		{
-			if (format[i] != '%' && format[i + 1] != '\0' )
-				compte += _putchar(format[i]);
+			compte += _putchar(format[i]);
 		}
 		i++;
 	}

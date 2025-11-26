@@ -16,7 +16,7 @@ int _printf(const char *format, ...)
 	int (*func)(va_list);
 
 	if (format == NULL) 
-	return (-1);
+		return (-1);
 
 	va_start(args, format);
 
@@ -45,7 +45,10 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			compte += _putchar(format[i]);
+			if (format[0] != '%' && format[1] != '\0')
+				compte += _putchar(format[i]);
+			else
+				compte = 0;
 		}
 		i++;
 	}

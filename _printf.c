@@ -26,7 +26,13 @@ int _printf(const char *format, ...)
 		{
 			if (!format[i + 1])
 			{
+				int ret = _putchar('%');
+				if (ret == -1)
+				{
+				 return (-1);
+				 compte += ret; 
 				break;
+				}
 			}
 			i++;
 			func = get_func(format[i]);

@@ -9,14 +9,6 @@
  */
 int main(void)
 {
-    int len1 = _printf("%%");
-	int len2 = _printf("%%%");
-	int len3 = _printf("%");
-    
-	printf("\n%d\n", len1);
-	printf("%d\n", len2);
-	printf("%d\n", len3);
-    
-
+	/* TEST A EFFECTUER */
     return (0);
 }

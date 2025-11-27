@@ -78,7 +78,7 @@ int _print_int(va_list args)
  */
 int _print_uint(va_list args)
 {
-	int long div = 1, compteur = 0;
+	unsigned long div = 1, compteur = 0;
 	unsigned int n = va_arg(args, unsigned int);
 	unsigned long m = n; 
 

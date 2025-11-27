@@ -10,10 +10,13 @@
 int main(void)
 {
     int len1 = _printf("%%");
+	printf("\n", len1);
 	int len2 = _printf("%%%");
+	printf("\n", len1);
 	int len3 = _printf("%");
+	printf("\n", len1);
     
-	printf("%d\n", len1);
+	printf("\n%d\n", len1);
 	printf("%d\n", len2);
 	printf("%d\n", len3);
     

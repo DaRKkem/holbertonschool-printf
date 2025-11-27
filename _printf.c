@@ -11,7 +11,7 @@
  */
 int _printf(const char *format, ...)
 {
-	int i = 0, compte = 0;
+	int i = 0, compte = 0, ret_percent = 0, ret_specifier = 0;
 	va_list args;
 	int (*func)(va_list);
 
@@ -43,8 +43,19 @@ int _printf(const char *format, ...)
 				compte += _putchar('%');
 			else
 			{
-				compte += _putchar('%');
-				compte += _putchar(format[i]);
+				ret_percent = _putchar('%');
+				if (ret_percent == -1)
+				{
+					return(-1);
+					compte += ret_percent;
+				}
+				ret_specifier = _putchar(format[i]);
+				if (ret_specifier == -1)
+				{
+					return(-1);
+					compte += ret_specifier;
+				}
+
 			}
 		}
 		else

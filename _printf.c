@@ -26,6 +26,7 @@ int _printf(const char *format, ...)
 		{
 			if (!format[i + 1])
 			{
+				compte--;
 				break;
 			}
 

@@ -10,7 +10,7 @@
 int main(void)
 {
     int len = _printf("%%");
-	int len2 = _printf("%%%");
+	int len2 = _printf("%");
 	
     _printf("\n");
     _printf("Return value: %d\n", len);

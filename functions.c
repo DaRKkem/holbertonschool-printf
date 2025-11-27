@@ -93,7 +93,11 @@ int _print_uint(va_list args)
 
 	while (div > 0)
 	{
-		compteur += _putchar((m / div) + '0');
+		int ret = _putchar((m / div) + '0');
+		if (ret == 0)
+		return (-1);
+
+		compteur += ret;
 		m %= div;
 		div /= 10;
 	}

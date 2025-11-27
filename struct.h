@@ -17,7 +17,7 @@ int _print_uint(va_list args);
  */
 typedef struct spec
 {
-	char type;
+	char specifier;
 	int (*f)(va_list);
 } spec;
 

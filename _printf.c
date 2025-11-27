@@ -47,7 +47,6 @@ int _printf(const char *format, ...)
 		{
 			compte += _putchar(format[i]);
 		}
-
 		i++;
 	}
 

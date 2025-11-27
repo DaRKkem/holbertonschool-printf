@@ -23,9 +23,9 @@ int (*get_func(char c))(va_list)
 		{'\0', NULL}
 	};
 
-	while (container[i].type != '\0')
+	while (container[i].specifier != '\0')
 	{
-		if (container[i].type == c)
+		if (container[i].specifier == c)
 			return (container[i].f);
 		i++;
 	}

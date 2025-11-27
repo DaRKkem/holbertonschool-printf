@@ -13,7 +13,7 @@ int _print_char(va_list args)
 	char c = va_arg(args, int);
 	int ret = _putchar(c);
 	if (ret == -1)
-	return(-1);
+		return(-1);
 	return (1);
 }
 
@@ -86,7 +86,7 @@ int _print_uint(va_list args)
 	{
 		int ret = _putchar('0');
 		if (ret == -1)
-		return(-1);
+			return(-1);
 		return (1);
 	}
 	
@@ -97,7 +97,7 @@ int _print_uint(va_list args)
 	{
 		int ret = _putchar((m / div) + '0');
 		if (ret == 0)
-		return (-1);
+			return (-1);
 
 		compteur += ret;
 		m %= div;

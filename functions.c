@@ -82,7 +82,9 @@ int _print_uint(va_list args)
 
 	if (n == 0)
 	{
-		compteur += _putchar('0');
+		int ret = _putchar('0');
+		if (ret == -1)
+		return(-1);
 		return (1);
 	}
 	

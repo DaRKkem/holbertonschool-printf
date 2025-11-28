@@ -9,7 +9,7 @@
  */
 int main(void)
 {
-	int r = _printf("1234%%%s", "test");
+	int r = _printf("%!\n");
 	printf("\n%d\n", r);
     return (0);
 }

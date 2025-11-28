@@ -21,7 +21,8 @@ Ce projet permet de maîtriser :
 | `%%` | Pourcentage littéral |
 | `%d` / `%i` | Entier signé (base 10) |
 | `%u` | Entier non signé (base 10) |
-| `%o` | Entier non signé en octal |
+| `%!` | Pourcentage littéral suivit d'un point d'exclamation |
+| `%K` | Pourcentage littéral suivit de la lettre K |
 
 > Conformément au cahier des charges : **pas** de gestion des flags, largeur, précision ou modificateurs de longueur.
 
@@ -79,6 +80,8 @@ int main(void)
     _printf("Pointeur : %p\n", (void*)&main);
     _printf("Pourcentage : %%\n");
     _printf("Longueur totale : %d\n", len);
+	_printf("%!\n");
+	_printf("%K\n");
     return (0);
 }
 ```
@@ -94,13 +97,11 @@ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -Wno-format *.c -o printf_test
 ---
 
 ## Tests et cas particuliers recommandés
-- `%s` avec `NULL` → afficher `(null)` ou définir ton comportement.  
-- `%p` avec `NULL` → choisir entre `(nil)` ou `0x0`.  
-- Gestion de `INT_MIN`, `INT_MAX`.  
-- Valeurs non signées supérieures à `INT_MAX`.  
-- Conversion correcte pour `%o`, `%x`, `%X`.  
-- `%%` → ne consomme aucun argument.  
-- Retour correct du nombre de caractères imprimés.  
+- `%s` avec `NULL` → afficher `(null)`.
+- Gestion de `INT_MIN`, `INT_MAX`.
+- Valeurs non signées supérieures à `INT_MAX`.
+- `%%`, `%!` et `%K` → ne consomme aucun argument.
+- Retour correct du nombre de caractères imprimés.
 - Vérification mémoire avec `valgrind` si usage de `malloc`.
 
 ---
@@ -121,19 +122,13 @@ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -Wno-format *.c -o printf_test
 - Utiliser une structure de mapping du type :
 
 ```c
-typedef struct printer {
-    char spec;
+typedef struct spec {
+    char specifier;
     int (*f)(va_list);
-} printer_t;
+} spec;
 ```
 
-- Créer des helpers dans `utils.c` :  
-  - conversion d’entier signé → chaîne décimale  
-  - conversion en base (octal/hex)  
-  - `reverse` pour inverser une chaîne  
-  - wrapper pour `write`
-
-- Commencer par les plus simples (`%c`, `%s`, `%%`), puis les entiers, puis `%p`.
+- Commencer par les plus simples (`%c`, `%s`, `%%`, `%!`, `%K`), puis les entiers.
 
 ---
 

@@ -40,18 +40,18 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			i++;
-			func = get_func(format[i]);
+			func = get_func(format[i + 1]);
 
 			if (func)
 				compte += func(args);
-			else if (format[i] == '%')
+			else if (format[i + 1] == '%')
 				compte += _putchar('%');
-			else if (format[i] == '!' || format[i] == 'K')
+			else if (format[i + 1] == '!' || format[i + 1] == 'K')
 			{
 				compte += _putchar('%');
-				compte += _putchar(format[i]);
+				compte += _putchar(format[i + 1]);
 			}
+			i++;
 		}
 		else
 		{

@@ -9,7 +9,7 @@
  */
 int main(void)
 {
-	int r = _printf("%%\n");
+	int r = _printf("%K\n");
 	printf("\n%d\n", r);
     return (0);
 }

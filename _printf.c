@@ -26,10 +26,10 @@ int _printf(const char *format, ...)
 		{
 			if (format[i + 1] == '\0')
 				return (-1);
-			if (get_func(format[i + 1]) == NULL && format[i + 1] != '%'
-						&& format[i + 1] != '!' && format[i + 1] != 'K')
+			else if (get_func(format[i + 1]) == NULL
+			 && format[i + 1] != '%' && format[i + 1] != '!' && format[i + 1] != 'K')
 				return (-1);
-			if (format[i + 1] == '%' || format[i + 1] == '!' || format[i + 1] == 'K')
+			else
 				i++;
 		}
 		i++;

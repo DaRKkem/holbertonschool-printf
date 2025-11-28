@@ -40,10 +40,16 @@ Affiche un entier non signé.
 .TP
 .B %%
 Affiche simplement le caractère '%'.
+.TP
+.B %!
+Affiche simplement les caractères '%!'.
+.TP
+.B %K
+Affiche simplement les caractères '%K'.
 
-Tout spécificateur inconnu est affiché tel quel sous la forme :
-.B %x
-où x est le caractère inconnu.
+Tout spécificateur inconnu sera concidéré comme une erreur
+.br
+d'utilisation de _printf() et un retour d'erreur (-1) sera effectué.
 
 .SH FONCTIONNEMENT
 .LP
@@ -69,6 +75,7 @@ Le nombre total de caractères écrits sur stdout.
 En cas d'erreur, notamment :
   * format == NULL  
   * problème d'écriture dans _putchar()
+  * un spécificateur inconnu à été trouvé dans format
 
 .SH FONCTIONS INTERNES
 

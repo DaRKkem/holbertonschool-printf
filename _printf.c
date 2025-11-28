@@ -26,9 +26,10 @@ int _printf(const char *format, ...)
 		{
 			if (format[i + 1] == '\0')
 				return (-1);
-			if (get_func(format[i + 1]) == NULL && format[i + 1] != '%' && format[i + 1] != '!')
+			if (get_func(format[i + 1]) == NULL && format[i + 1] != '%'
+						&& format[i + 1] != '!' && format[i + 1] != 'K')
 				return (-1);
-			if (format[i + 1] == '%' || format[i + 1] == '!')
+			if (format[i + 1] == '%' || format[i + 1] == '!' || format[i + 1] == 'K')
 				i++;
 		}
 		i++;
@@ -46,10 +47,10 @@ int _printf(const char *format, ...)
 				compte += func(args);
 			else if (format[i] == '%')
 				compte += _putchar('%');
-			else if (format[i] == '!')
+			else if (format[i] == '!' || format[i] == 'K')
 			{
 				compte += _putchar('%');
-				compte += _putchar('!');
+				compte += _putchar(format[i]);
 			}
 		}
 		else

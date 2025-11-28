@@ -39,13 +39,13 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			func = get_func(format[i + 1]);
+			i++;
+			func = get_func(format[i]);
 
 			if (func)
 				compte += func(args);
-			else if (format[i + 1] == '%')
+			else if (format[i] == '%')
 				compte += _putchar('%');
-			i++;
 		}
 		else
 		{

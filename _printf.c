@@ -29,7 +29,7 @@ int _printf(const char *format, ...)
 			else if (get_func(format[i + 1]) == NULL
 			 && format[i + 1] != '%' && format[i + 1] != '!' && format[i + 1] != 'K')
 				return (-1);
-			else
+			else /* se fait uniquement pour '%', '!' ou 'K'*/
 				i++;
 		}
 		i++;

@@ -24,24 +24,28 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			if (!format[i + 1])
-			{
-				compte--;
-				break;
-			}
+			if (format[i + 1] == '\0')
+				return (-1);
+			if (get_func(format[i + 1]) == NULL && format[i + 1] != '%')
+				return (-1);
+			if (format[i + 1] == '%')
+				i++;
+		}
+		i++;
+	}
 
-			i++;
-			func = get_func(format[i]);
+	i = 0;
+	while (format[i])
+	{
+		if (format[i] == '%')
+		{
+			func = get_func(format[i + 1]);
 
 			if (func)
 				compte += func(args);
-			else if (format[i] == '%')
+			else if (format[i + 1] == '%')
 				compte += _putchar('%');
-			else
-			{
-				compte += _putchar('%');
-				compte += _putchar(format[i]);
-			}
+			i++;
 		}
 		else
 		{

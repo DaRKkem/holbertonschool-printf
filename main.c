@@ -9,6 +9,7 @@
  */
 int main(void)
 {
-	/* TEST A EFFECTUER */
+	int r = _printf("1234%%%s", "test");
+	printf("\n%d\n", r);
     return (0);
 }

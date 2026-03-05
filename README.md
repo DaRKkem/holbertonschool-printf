@@ -1,125 +1,136 @@
-# _printf — Implémentation personnalisée de la fonction `printf`
 
-**Projet de groupe — Holberton School / ALX**  
-Dépôt : `holbertonschool-printf`
+# _printf — Custom Implementation of the `printf` Function![Uploading Gemini_Generated_Image_amstviamstviamst.png…]()
 
-## Présentation
-`_printf` produit une sortie formatée vers la sortie standard (`stdout`) et retourne le nombre de caractères affichés (hors caractère nul terminal).  
-Ce projet permet de maîtriser :
-- les fonctions variadiques (`va_start`, `va_end`, `va_arg`, `va_copy`),  
-- le parsing manuel d’une chaîne de format,  
-- la conversion de nombres dans différentes bases,  
-- l’écriture bas niveau avec `write`.
+
+**Group Project — Holberton School / ALX**  
+Repository: `holbertonschool-printf`
+
+## Presentation
+`_printf` produces formatted output to the standard output (`stdout`) and returns the number of characters printed (excluding the terminating null character).  
+This project allows you to master:
+- variadic functions (`va_start`, `va_end`, `va_arg`, `va_copy`)
+- manual parsing of a format string
+- number conversion in different bases
+- low-level output using `write`
 
 ---
 
-## Spécificateurs supportés
-| Spécificateur | Description |
+## Supported Specifiers
+| Specifier | Description |
 |---:|---|
-| `%c` | Caractère |
-| `%s` | Chaîne de caractères |
-| `%%` | Pourcentage littéral |
-| `%d` / `%i` | Entier signé (base 10) |
-| `%u` | Entier non signé (base 10) |
-| `%!` | Pourcentage littéral suivit d'un point d'exclamation |
-| `%K` | Pourcentage littéral suivit de la lettre K |
+| `%c` | Character |
+| `%s` | String |
+| `%%` | Literal percent |
+| `%d` / `%i` | Signed integer (base 10) |
+| `%u` | Unsigned integer (base 10) |
+| `%!` | Literal percent followed by an exclamation mark |
+| `%K` | Literal percent followed by the letter K |
 
-> Conformément au cahier des charges : **pas** de gestion des flags, largeur, précision ou modificateurs de longueur.
+> According to the project requirements: **no** handling of flags, width, precision, or length modifiers.
 
 ---
 
 ## Prototype
 ```c
 int _printf(const char *format, ...);
-```
+````
 
 ---
 
-## Contraintes techniques
-- Éditeurs autorisés : `vi`, `vim`, `emacs`.  
-- Compilation (Ubuntu 20.04) :
+## Technical Constraints
+
+* Allowed editors: `vi`, `vim`, `emacs`
+* Compilation (Ubuntu 20.04):
+
 ```bash
 gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -Wno-format *.c
 ```
-- Style Betty strict (`betty-style.pl`, `betty-doc.pl`)  
-- Aucune variable globale  
-- Maximum 5 fonctions par fichier  
-- Tous les prototypes dans `main.h` (avec include guard)  
-- Fonctions autorisées :  
+
+* Strict Betty style (`betty-style.pl`, `betty-doc.pl`)
+* No global variables
+* Maximum of 5 functions per file
+* All prototypes in `main.h` (with include guard)
+* Allowed functions:
   `write`, `malloc`, `free`, `va_start`, `va_end`, `va_copy`, `va_arg`
 
 ---
 
-## Structure suggérée du projet
+## Suggested Project Structure
+
 ```
 .
-├── main.h           # prototypes et includes
-├── _printf.c        # fonction principale
+├── main.h           # prototypes and includes
+├── _printf.c        # main function
 ├── function.c       # %c, %s, %d, %i, %u
-├── utils.c          # helpers et conversions
-├── _putchar         # fonction putchar
-├── get_func         # structure 
-├── struct.h         # structures types
+├── utils.c          # helpers and conversions
+├── _putchar         # putchar function
+├── get_func         # structure
+├── struct.h         # structure types
 └── tests/
     └── printf_test.c
 ```
 
 ---
 
-## Exemple d’utilisation
+## Usage Example
+
 ```c
 #include "main.h"
 
 int main(void)
 {
-    int len = _printf("Chaîne : %s\n", "Hello world");
-    _printf("Caractère : [%c]\n", 'H');
-    _printf("Entier négatif : %d\n", -762534);
+    int len = _printf("String : %s\n", "Hello world");
+    _printf("Character : [%c]\n", 'H');
+    _printf("Negative integer : %d\n", -762534);
     _printf("Unsigned : %u | Octal : %o | Hex : %x | HEX : %X\n",
             4294967295u, 255, 255, 255);
-    _printf("Pointeur : %p\n", (void*)&main);
-    _printf("Pourcentage : %%\n");
-    _printf("Longueur totale : %d\n", len);
-	_printf("%!\n");
-	_printf("%K\n");
+    _printf("Pointer : %p\n", (void*)&main);
+    _printf("Percentage : %%\n");
+    _printf("Total length : %d\n", len);
+    _printf("%!\n");
+    _printf("%K\n");
     return (0);
 }
 ```
 
-Compilation :
+Compilation:
+
 ```bash
 gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -Wno-format *.c -o printf_test
 ./printf_test
 ```
 
-> `-Wno-format` est toléré uniquement pour les tests (évite les warnings lors de la comparaison avec le vrai `printf`).
+> `-Wno-format` is tolerated only for tests (prevents warnings when comparing with the real `printf`).
 
 ---
 
-## Tests et cas particuliers recommandés
-- `%s` avec `NULL` → afficher `(null)`.
-- Gestion de `INT_MIN`, `INT_MAX`.
-- Valeurs non signées supérieures à `INT_MAX`.
-- `%%`, `%!` et `%K` → ne consomme aucun argument.
-- Retour correct du nombre de caractères imprimés.
-- Vérification mémoire avec `valgrind` si usage de `malloc`.
+## Recommended Tests and Edge Cases
+
+* `%s` with `NULL` → display `(null)`
+* Handling of `INT_MIN`, `INT_MAX`
+* Unsigned values greater than `INT_MAX`
+* `%%`, `%!`, and `%K` → do not consume any argument
+* Correct return of the number of printed characters
+* Memory verification with `valgrind` if `malloc` is used
 
 ---
 
-## Checklist de conformité
-- [ ] Aucun warning (sauf `-Wno-format` pour tests)  
-- [ ] Aucun leak mémoire  
-- [ ] Aucun variable globale  
-- [ ] Style Betty OK  
-- [ ] Maximum 5 fonctions par fichier  
-- [ ] Tous les prototypes dans `main.h`  
-- [ ] Tous les spécificateurs implémentés  
-- [ ] Tests validés sur cas limites  
+## Compliance Checklist
+
+* [ ] No warnings (except `-Wno-format` for tests)
+* [ ] No memory leaks
+* [ ] No global variables
+* [ ] Betty style OK
+* [ ] Maximum 5 functions per file
+* [ ] All prototypes in `main.h`
+* [ ] All specifiers implemented
+* [ ] Tests validated on edge cases
 
 ---
 
-## Notes d’implémentation
-- Utiliser une structure de mapping du type :
+## Implementation Notes
+
+Use a mapping structure such as:
 
 ```c
 typedef struct spec {
@@ -128,19 +139,23 @@ typedef struct spec {
 } spec;
 ```
 
-- Commencer par les plus simples (`%c`, `%s`, `%%`, `%!`, `%K`), puis les entiers.
+Start with the simplest ones (`%c`, `%s`, `%%`, `%!`, `%K`), then implement integers.
 
 ---
 
-## Auteurs
-- AMBLARD Alison — `@Ali731-Amb`  
-- ROSSI Damien — `@DaRKkem`  
+## Authors
+
+* AMBLARD Alison — `@Ali731-Amb`
+* ROSSI Damien — `@DaRKkem`
 
 ---
 
-## Licence
-Projet interne — Holberton School / ALX  
-Usage pédagogique uniquement.
+## License
 
-> Fait avec passion ☕🚀
+Internal project — Holberton School / ALX
+Educational use only.
 
+> Made with passion ☕🚀
+
+```
+```
